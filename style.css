@@ -1,0 +1,36 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: darkslategrey;
+}
+
+body {
+    display: flex;
+    margin-top: 4rem;
+    justify-content: center;
+}
+
+#watch-example {
+    min-width: 167px;
+    max-width: 307px;
+    box-shadow: 0px 1px 6px lightgrey;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#watch-example p {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#wath-example p input {
+    border-color: lightblue;
+}
+
+#watch-example .answer {
+    border: 1px solid lightgrey;
+    /* box-shadow: -1px 1px 5px lightgrey; */
+    border-radius: 7px;
+    padding: 1rem;
+}
