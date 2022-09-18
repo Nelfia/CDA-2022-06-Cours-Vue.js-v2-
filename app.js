@@ -8,7 +8,7 @@ let watchExampleVM = new Vue({
         // Lorsque question change, cette fonction est exécutée
         question: function (newQuestion, oldQuestion) {
             this.answer = 'Waiting for you to stop typing...'
-            this.debouncedGetAnswer
+            this.debouncedGetAnswer()
         }
     },
     created: function () {
