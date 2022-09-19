@@ -1,34 +1,18 @@
-let watchExampleVM = new Vue({
-    el: '#watch-example',
+let form = new Vue({
+    el: '#form',
     data: {
-        question: "",
-        answer: 'I cannot give you an answer until you ask a question'
+        prenom: '',
+        nom: '',
+        age: 0
     },
-    watch: {
-        // Lorsque question change, cette fonction est exécutée
-        question: function (newQuestion, oldQuestion) {
-            this.answer = 'Waiting for you to stop typing...'
-            this.debouncedGetAnswer()
+    computed: {
+        hasFullName: function () {
+            return this.nom && this.prenom
         }
     },
-    created: function () {
-        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
-    },
     methods: {
-        getAnswer: function () {
-            if (this.question.indexOf('?') === -1) {
-                this.answer = "Questions usually contain a question mark. ;-)"
-                return
-            }
-            this.answer = 'Thinking...'
-            let vm = this
-            axios.get('https://yesno.wtf/api')
-            .then(function(response) {
-                vm.answer = _.capitalize(response.data.answer)
-            })
-            .catch(function (error) {
-                vm.answer = 'Error! Could not reach the API. '+ error
-            })
+        messageConsole: function () {
+            return console.log('OK bien reçu !')
         }
     }
 })
