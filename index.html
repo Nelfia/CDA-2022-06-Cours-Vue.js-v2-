@@ -10,16 +10,51 @@
 </head>
 
 <body>
+    <!-- FORMULAIRE D'INSCRIPTION -->
     <div id="form">
-        <input type="text" v-model="prenom">
-        <input type="text" v-model="nom">
-        <input type="text" v-model="age">
 
-        <p v-if="hasFullName">Bonjour, {{ prenom }} {{ nom.split('')[0] }}.</p>
+        <!-- IDENTITE -->
+        <div>   
+            <label for="nom">Nom :</label>
+            <input type="text" v-model="nom" placeholder="Entrez votre nom">
+            <label for="prenom">Prénom :</label>
+            <input type="text" v-model="prenom" placeholder="Entrez votre prénom">
+            <label for="age">Age :</label>
+            <input type="number" v-model="age" placeholder="Entrez votre age">
+            <p v-if="hasFullName">Bonjour, {{ fullName }}</p>
+        </div>
 
-        <button v-if="(age > 18) && (prenom.length > 3) && (nom.length > 3)"
-            @click="messageConsole"
-        >Inscription</button>
+        <!-- PROVIDERS -->
+        <div>
+            <label for="providers">D'où nous connaissez-vous ?</label>
+            <select type="text" id="providers" v-model="selectedProvider">
+                <option disabled>--Select one option--</option>
+                <option value="google">Google</option>
+                <option value="recommandations">Recommandations</option>
+                <option value="pub">Pub</option>
+                <option value="autre">Autre</option>
+                <input type="text" style="margin-left: 1rem;" v-if="isAutreSelected" v-model="autreProvider" placeholder="Ecrivez votre réponse">
+            </select>
+        </div>
+
+        <!-- BIERES PREFEREES -->
+        <div id="bieres">
+            <p>Quelle est votre bière préférée?</p>
+
+            <div v-html="beersList" v-for="beer in beers" v-bind:key="beer.id" v-bind:value="beer.text"></div>
+
+            <p></p>
+        </div>
+
+        <!-- ACCORD POUR NEWSLETTER -->
+        <div>
+            <input type="checkbox" v-model="isAgreeForNewsletter"> En cochant cette cas, vous acceptez de recevoir notre
+            Newsletter gratuitement.
+        </div>
+
+        <!-- BOUTON SOUSCRIPTION -->
+        <button v-if="(age > 18) && (prenom.value.length > 3) && (nom.value.length > 3)"
+            @click="messageConsole">Inscription</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
